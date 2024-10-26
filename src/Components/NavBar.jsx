@@ -19,7 +19,7 @@ const NavBar = () => {
                         </div>
 
                         <div class="hidden sm:flex sm:items-center gap-10 ">
-                            <a href="#" class="text-gray-800 text-sm font-semibold border px-4 py-2 rounded-lg hover:text-blue-400 bg-white">Log Out</a>
+                            <a href="/" class="text-gray-800 text-sm font-semibold border px-4 py-2 rounded-lg hover:text-blue-400 bg-white">Log Out</a>
                             <div className='w-8 h-8 bg-black rounded-full flex justify-center items-center'></div>
                         </div>
 

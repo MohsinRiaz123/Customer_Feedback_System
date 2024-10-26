@@ -161,7 +161,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     {showEditPop && (
-                        <div className="fixed  inset-0 bg-black bg-opacity-50 flex items-center mx-auto">
+                        <div className="fixed  inset-0 bg-black bg-opacity-50 flex items-center justify-center mx-auto">
                             <div className="flex bg-white px-10 py-5 w-[90%] lg:w-[45%] flex-col rounded-2xl space-y-5">
                                 <div className="text-lg flex justify-between">
                                     <div className="text-xl font-bold">Edit Form</div>
