@@ -1,6 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const NavBar = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const menuRef = useRef(null);
+
+    const handleMenuToggle = () => {
+        setIsMenuOpen((prev) => !prev);
+    };
+
+    const handleClickOutside = (event) => {
+        // Close the menu if clicking outside of it
+        if (menuRef.current && !menuRef.current.contains(event.target)) {
+            setIsMenuOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        // Add event listener for clicks outside of the menu
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            // Clean up the event listener on component unmount
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     return (
         <div className="w-full justify-between">
             <div className="bg-blue-400 shadow">
@@ -30,7 +53,7 @@ const NavBar = () => {
                             <div className="w-8 h-8 bg-black rounded-full flex justify-center items-center"></div>
                         </div>
 
-                        <div className="sm:hidden cursor-pointer">
+                        <div className="sm:hidden cursor-pointer" onClick={handleMenuToggle}>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="w-6 h-6 text-blue-600"
@@ -38,7 +61,7 @@ const NavBar = () => {
                             >
                                 <path
                                     fill="currentColor"
-                                    d="M12.9499909,17 C12.7183558,18.1411202 11.709479,19 10.5,19 C9.29052104,19 8.28164422,18.1411202 8.05000906,17 L3.5,17 C3.22385763,17 3,16.7761424 3,16.5 C3,16.2238576 3.22385763,16 3.5,16 L8.05000906,16 C8.28164422,14.8588798 9.29052104,14 10.5,14 C11.709479,14 12.7183558,14.8588798 12.9499909,16 L20.5,16 C20.7761424,16 21,16.2238576 21,16.5 C21,16.7761424 20.7761424,17 20.5,17 L12.9499909,17 Z M20.5,13 C20.7761424,13 21,13.2238576 21,13.5 C21,13.7761424 20.7761424,14 20.5,14 L3.5,14 C3.22385763,14 3,13.7761424 3,13.5 C3,13.2238576 3.22385763,13 3.5,13 L20.5,13 Z M20.5,10 C20.7761424,10 21,10.2238576 21,10.5 C21,10.7761424 20.7761424,11 20.5,11 L3.5,11 C3.22385763,11 3,10.7761424 3,10.5 C3,10.2238576 3.22385763,10 3.5,10 L20.5,10 Z M20.5,7 C20.7761424,7 21,7.22385763 21,7.5 C21,7.77614237 20.7761424,8 20.5,8 L3.5,8 C3.22385763,8 3,7.77614237 3,7.5 C3,7.22385763 3.22385763,7 3.5,7 L20.5,7 Z"
+                                    d="M12.9499909,17 C12.7183558,18.1411202 11.709479,19 10.5,19 C9.290521,19 8.2816442,18.1411202 8.0499909,17 L17.9500091,17 C17.7183558,18.1411202 16.709479,19 15.5,19 C14.290521,19 13.2816442,18.1411202 12.9499909,17 Z M12.9499909,17 L17,17 L17,15 L12.9499909,15 L12.9499909,17 Z M12.9499909,14 L20.5,14 L20.5,10 L12.9499909,10 L12.9499909,14 Z M20.5,8 L12.9499909,8 L12.9499909,7 L20.5,7 C20.7761424,7 21,7.22385763 21,7.5 C21,7.77614237 20.7761424,8 20.5,8 Z"
                                 />
                             </svg>
                         </div>
@@ -47,17 +70,17 @@ const NavBar = () => {
             </div>
 
             {/* Mobile Menu */}
-            <div className="sm:hidden">
-                <div className="flex flex-col items-start py-2 bg-white shadow">
-                    <a href="#" className="text-gray-800 text-sm font-semibold hover:text-blue-600">Dashboard</a>
-                    <a href="#" className="text-gray-800 text-sm font-semibold hover:text-blue-600">About Us</a>
-                    <a href="#" className="text-gray-800 text-sm font-semibold hover:text-blue-600">Contact Us</a>
-                    <div className="w-full flex justify-between items-center mt-4">
+            {isMenuOpen && (
+                <div ref={menuRef} className="sm:hidden bg-white shadow py-2">
+                    <a href="#" className="text-gray-800 text-sm font-semibold hover:text-blue-600 block px-4 py-2">Dashboard</a>
+                    <a href="#" className="text-gray-800 text-sm font-semibold hover:text-blue-600 block px-4 py-2">About Us</a>
+                    <a href="#" className="text-gray-800 text-sm font-semibold hover:text-blue-600 block px-4 py-2">Contact Us</a>
+                    <div className="flex justify-between items-center px-4 py-2">
                         <a href="/" className="text-gray-800 text-sm font-semibold border px-4 py-2 rounded-lg hover:text-blue-400 bg-white">Log Out</a>
                         <div className="w-8 h-8 bg-black rounded-full"></div>
                     </div>
                 </div>
-            </div>
+            )}
         </div>
     );
 };
