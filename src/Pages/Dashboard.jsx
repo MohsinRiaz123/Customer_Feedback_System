@@ -40,8 +40,8 @@ const Dashboard = () => {
         },
     ]);
     const [showEditPop, setShowEditPop] = useState(false);
-    const [isMenuOpen, setIsMenuOpen] = useState(false); 
-    const menuRef = useRef(null); 
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const menuRef = useRef(null);
 
     const { values, handleChange, handleSubmit, handleBlur, setValues } = useFormik({
         initialValues: {
@@ -295,33 +295,7 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            <div className="md:hidden fixed bottom-5 right-5">
-                <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="bg-blue-500 text-white px-4 py-2 rounded">
-                    Menu
-                </button>
-            </div>
 
-            {isMenuOpen && (
-                <div ref={menuRef} className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="bg-white w-3/4 p-5 rounded-lg">
-                        <h2 className="text-xl font-bold mb-4">Menu</h2>
-                        <ul className="space-y-2">
-                            <li>
-                                <button className="text-blue-500">Home</button>
-                            </li>
-                            <li>
-                                <button className="text-blue-500">Forms</button>
-                            </li>
-                            <li>
-                                <button className="text-blue-500">Settings</button>
-                            </li>
-                            <li>
-                                <button className="text-blue-500" onClick={() => setIsMenuOpen(false)}>Close Menu</button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            )}
         </div>
     );
 };
