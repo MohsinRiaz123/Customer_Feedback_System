@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { RiSearch2Line } from "react-icons/ri";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { FaRegEdit } from "react-icons/fa";
@@ -7,6 +7,7 @@ import { RxCross1 } from "react-icons/rx";
 import { useFormik } from "formik";
 import { GoDotFill } from "react-icons/go";
 import NavBar from "../Components/NavBar";
+
 const Dashboard = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -39,6 +40,8 @@ const Dashboard = () => {
         },
     ]);
     const [showEditPop, setShowEditPop] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false); 
+    const menuRef = useRef(null); 
 
     const { values, handleChange, handleSubmit, handleBlur, setValues } = useFormik({
         initialValues: {
@@ -67,6 +70,19 @@ const Dashboard = () => {
             setCurrentUser(null);
         },
     });
+
+    const handleClickOutside = (event) => {
+        if (menuRef.current && !menuRef.current.contains(event.target)) {
+            setIsMenuOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
     const getRowHeight = () => {
         if (window.innerWidth >= 500) return 110;
@@ -133,7 +149,7 @@ const Dashboard = () => {
 
             <div className="space-y-5 h-full flex flex-col justify-between">
                 <div>
-                    <div className="flex flex-col md:flex-row items-center justify-between  px-24 mt-10">
+                    <div className="flex flex-col md:flex-row items-center justify-between px-24 mt-10">
                         <div>
                             <h2 className=" flex text-4xl font-bold">Form Management</h2>
                         </div>
@@ -161,7 +177,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     {showEditPop && (
-                        <div className="fixed  inset-0 bg-black bg-opacity-50 flex items-center justify-center mx-auto">
+                        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center mx-auto">
                             <div className="flex bg-white px-10 py-5 w-[90%] lg:w-[45%] flex-col rounded-2xl space-y-5">
                                 <div className="text-lg flex justify-between">
                                     <div className="text-xl font-bold">Edit Form</div>
@@ -233,9 +249,9 @@ const Dashboard = () => {
                         <div className="flex items-center mx-auto">Status</div>
                         <div className="flex items-center mx-auto">Actions</div>
                     </div>
-                    <div className=" px-3 md:px-20">
+                    <div className="px-3 md:px-20">
                         {currentRows.map((user) => (
-                            <div key={user.title} className="grid grid-cols-7    py-5 border-b border-gray-300">
+                            <div key={user.title} className="grid grid-cols-7 py-5 border-b border-gray-300">
                                 <div className="flex items-center justify-start">{user.title}</div>
                                 <div className="flex items-center mx-auto">{user.date}</div>
                                 <div className="flex items-center mx-auto">{user.positive}</div>
@@ -256,9 +272,9 @@ const Dashboard = () => {
                         ))}
                     </div>
                 </div>
-                <div >
-                    <div className="fixed bottom-0 left-0 w-full bg-white ">
-                        <div className="flex justify-between px-16 py-4  ">
+                <div>
+                    <div className="fixed bottom-0 left-0 w-full bg-white">
+                        <div className="flex justify-between px-16 py-4">
                             <button
                                 className="flex gap-2 items-center"
                                 disabled={currentPage === 1}
@@ -278,6 +294,34 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
+
+            <div className="md:hidden fixed bottom-5 right-5">
+                <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="bg-blue-500 text-white px-4 py-2 rounded">
+                    Menu
+                </button>
+            </div>
+
+            {isMenuOpen && (
+                <div ref={menuRef} className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="bg-white w-3/4 p-5 rounded-lg">
+                        <h2 className="text-xl font-bold mb-4">Menu</h2>
+                        <ul className="space-y-2">
+                            <li>
+                                <button className="text-blue-500">Home</button>
+                            </li>
+                            <li>
+                                <button className="text-blue-500">Forms</button>
+                            </li>
+                            <li>
+                                <button className="text-blue-500">Settings</button>
+                            </li>
+                            <li>
+                                <button className="text-blue-500" onClick={() => setIsMenuOpen(false)}>Close Menu</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
