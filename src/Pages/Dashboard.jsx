@@ -151,7 +151,7 @@ const Dashboard = () => {
                 <div>
                     <div className="flex flex-col md:flex-row items-center justify-between px-24 mt-10">
                         <div>
-                            <h2 className=" flex text-4xl font-bold">Form Management</h2>
+                            <h2 className=" flex text-2xl lg:text-4xl font-bold">Form Management</h2>
                         </div>
                         <div className="flex gap-20 items-center pr-0 md:pr-5 lg:pr-10 text-xs lg:text-base">
                             <div className="flex border border-gray-300 shadow-lg shadow-gray-300 px-3 py-1 rounded-lg">
@@ -170,7 +170,7 @@ const Dashboard = () => {
                                 </div>
                             </div>
                             <div>
-                                <button className=" border-2 border-blue-400 px-3 py-1 font-semibold text-blue-400 rounded-lg hover:bg-blue-400 hover:text-white transition-all duration-300">
+                                <button className=" text-sm lg:text-baseline border-2 border-blue-400 px-3 py-1 font-semibold text-blue-400 rounded-lg hover:bg-blue-400 hover:text-white transition-all duration-300">
                                     Add Form
                                 </button>
                             </div>
