@@ -153,8 +153,8 @@ const Dashboard = () => {
                         <div>
                             <h2 className=" flex text-2xl lg:text-4xl font-bold">Form Management</h2>
                         </div>
-                        <div className="flex gap-20 items-center pr-0 md:pr-5 lg:pr-10 text-xs lg:text-base">
-                            <div className="flex border border-gray-300 shadow-lg shadow-gray-300 px-3 py-1 rounded-lg">
+                        <div className="flex gap-5 items-center justify-around ">
+                            <div className="flex border border-gray-300 shadow-lg shadow-gray-300 px-3 py-1 rounded-lg text-xs lg:text-base">
                                 <div>
                                     <input
                                         type="text"
@@ -169,8 +169,8 @@ const Dashboard = () => {
                                     <RiSearch2Line />
                                 </div>
                             </div>
-                            <div>
-                                <button className=" text-xs lg:text-md border-2 border-blue-400 px-3 py-1 font-semibold text-blue-400 rounded-lg hover:bg-blue-400 hover:text-white transition-all duration-300">
+                            <div className="text-[6px] md:text-sm lg:text-base">
+                                <button className="  border-2 border-blue-400 p-1 font-semibold text-blue-400 rounded-lg hover:bg-blue-400 hover:text-white transition-all duration-300">
                                     Add Form
                                 </button>
                             </div>
