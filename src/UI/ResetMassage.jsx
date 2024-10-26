@@ -13,7 +13,7 @@ const ResetMassage = () => {
         <img src={img} alt="login" />
       </div>
       <div className="w-full lg:w-1/2 px-4 my-auto ">
-        <div>
+        <div  className="mt-20 lg:mt-0">
           <h2 className="font-bold text-center text-2xl  ">
             Reset Successful
           </h2>

@@ -57,7 +57,7 @@ const OTPInput = () => {
                 <img src={img} alt="login" />
             </div>
             <div className="flex flex-col  items-center justify-center mx-auto text-blue-400">
-                <h2 className="text-2xl font-semibold mb-4 ">Enter OTP</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-20 lg:mt-0 ">Enter OTP</h2>
 
                 <div className="flex gap-4 mb-6">
                     {otp.map((_, index) => (

@@ -88,7 +88,7 @@ const SignUpInputs = () => {
         <img src={img} alt="login" />
       </div>
       <div className=" w-full lg:w-1/2 px-10  my-auto">
-        <h1 className="text-2xl font-semibold text-center font-poppins text-blue-400">
+        <h1 className="text-2xl font-semibold text-center font-poppins text-blue-400 mt-20 lg:mt-0">
           Sign Up
         </h1>
         <form

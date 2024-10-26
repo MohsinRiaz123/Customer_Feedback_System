@@ -39,7 +39,7 @@ const ForgotInputs = () => {
         <img src={img} alt="forget" />
       </div>
       <div className="w-full lg:w-1/2 px-10 my-auto ">
-        <div>
+        <div className="mt-20 lg:mt-0">
           <h2 className="font-bold text-center text-2xl ">
             Forgot Password
           </h2>

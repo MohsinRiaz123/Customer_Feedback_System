@@ -36,7 +36,7 @@ const LoginInputs = () => {
         <img src={img} alt="login" className="" />
       </div>
       <div className="w-full lg:w-1/2 px-10 my-auto ">
-        <div>
+        <div  className="mt-20 lg:mt-0">
           <p className="font-semibold text-blue-400 text-center text-lg lg:text-2xl ">
             Log In
           </p>
