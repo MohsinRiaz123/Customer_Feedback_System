@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-
+import img from '../assets/feedback.png';
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const menuRef = useRef(null);
@@ -31,7 +31,7 @@ const NavBar = () => {
                     <div className="flex items-center justify-between py-2">
                         <div  className='bg-white px-2 py-1 rounded-xl'>
                            
-                        <img src='../src/assets/feedback.png' className='w-10 h-10' alt='logo'/>
+                        <img src={img} className='w-10 h-10' alt='logo'/>
                         </div>
 
                         <div className="hidden sm:flex sm:items-center">
