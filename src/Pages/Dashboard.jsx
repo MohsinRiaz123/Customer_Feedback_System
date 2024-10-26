@@ -170,7 +170,7 @@ const Dashboard = () => {
                                 </div>
                             </div>
                             <div>
-                                <button className=" text-sm lg:text-baseline border-2 border-blue-400 px-3 py-1 font-semibold text-blue-400 rounded-lg hover:bg-blue-400 hover:text-white transition-all duration-300">
+                                <button className=" text-xs lg:text-md border-2 border-blue-400 px-3 py-1 font-semibold text-blue-400 rounded-lg hover:bg-blue-400 hover:text-white transition-all duration-300">
                                     Add Form
                                 </button>
                             </div>
@@ -240,7 +240,7 @@ const Dashboard = () => {
                             </div>
                         </div>
                     )}
-                    <div className="font-semibold mt-10 grid grid-cols-7 px-3 md:px-20 bg-black text-white text-[8px] md:text-md lg:text-lg">
+                    <div className="font-semibold mt-10 grid grid-cols-7 px-3 md:px-20 bg-black text-white text-[8px] md:text-md lg:text-xl">
                         <div className="flex items-center justify-start">Title</div>
                         <div className="flex items-center mx-auto">Starting Date</div>
                         <div className="flex items-center mx-auto">+ Reviews</div>
@@ -249,7 +249,7 @@ const Dashboard = () => {
                         <div className="flex items-center mx-auto">Status</div>
                         <div className="flex items-center mx-auto">Actions</div>
                     </div>
-                    <div className="px-3 md:px-20">
+                    <div className="px-3 md:px-20 text-[8px] md:text-md lg:text-xl">
                         {currentRows.map((user) => (
                             <div key={user.title} className="grid grid-cols-7 py-5 border-b border-gray-300">
                                 <div className="flex items-center justify-start">{user.title}</div>
@@ -261,10 +261,10 @@ const Dashboard = () => {
                                     <GoDotFill style={{ color: getDotColor(user.status) }} /> {user.status}
                                 </div>
                                 <div className="flex items-center mx-auto space-x-2">
-                                    <button onClick={() => handleEdit(user)} title="Edit Form" className="text-2xl text-blue-500">
+                                    <button onClick={() => handleEdit(user)} title="Edit Form" className=" text-blue-500">
                                         <FaRegEdit />
                                     </button>
-                                    <button onClick={() => handleDelete(user.title)} title="DeleteForm" className="text-2xl text-red-500">
+                                    <button onClick={() => handleDelete(user.title)} title="DeleteForm" className=" text-red-500">
                                         <RiDeleteBinLine />
                                     </button>
                                 </div>
